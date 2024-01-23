@@ -13,8 +13,8 @@ from ReaderData import ReaderData
 class Main:
         def __init__(self):
             data = ReaderData().dataset
+
             smoker_dist = data['Smoker'].value_counts()
-            data['Smoker']=data['Smoker'].map({'yes':1 ,'no' :0})
 
             smoker_dist.plot(kind='bar')
             plt.title('Distribution of Smoker Class')
@@ -40,7 +40,9 @@ class Main:
             plt.show()
 
 
-            x = data[['Age' , 'Insurance Charges']]
+            #x = data.drop('Smoker', axis=1)
+            #print (x.head())
+            x= data[['Age' , 'Insurance Charges' ]]
             y = data['Smoker']
 
 
@@ -51,10 +53,6 @@ class Main:
             plt.ylabel('Insurance Charges')
             plt.show()
 
-            Gender = pd.get_dummies(data.Gender)
-            Region = pd.get_dummies(data.Region)
-            data = pd.concat([data, Gender, Region], axis='columns')
-            data = data.drop(['Gender', 'Region'], axis='columns')
 
             print(data.head())
 

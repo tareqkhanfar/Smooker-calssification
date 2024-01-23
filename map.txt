@@ -1,0 +1,2 @@
+Gender mapping: {'male': 1, 'female': 0}
+Region mapping: {'north': 0, 'south': 1}

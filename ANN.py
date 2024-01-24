@@ -12,7 +12,7 @@ y_test=object.y_test
 
 
 model = Sequential([
-    Dense(units=3, activation='relu', input_shape=(x_train.shape[1],)),
+    Dense(units=1, activation='relu', input_shape=(x_train.shape[1],)),
     Dense(units=1, activation='sigmoid')
 ])
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])

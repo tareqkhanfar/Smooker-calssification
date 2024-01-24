@@ -17,21 +17,39 @@ class ReaderData:
     def __init__(self):
 
         dataset = pd.read_csv("G:\\D\\MachineLearning\\smook\\cleaned_smoker_data2.csv")
+        #dataset = pd.read_csv("G:\\D\\MachineLearning\\smook\\Data.csv")
+
+        for col in dataset.columns:
+            print (dataset[col].describe())
         #dataset['Smoker'] = dataset['Smoker'].map({'yes': 1, 'no': 0})
         #dataset['Gender'] = dataset['Gender'].map({'male': 1, 'female': 0})
         #dataset['Region'] = dataset['Region'].map({'north': 1, 'south': 0})
+
+        dataset.hist(bins=30, figsize=(10, 10))
+        plt.show()
+
+       # duplicate_counts = dataset.duplicated(
+        #    subset=['Age', 'Gender', 'BMI', 'Region', 'No. Childred', 'Insurance Charges', 'Smoker'])
+
+        # Print the duplicate counts
+        #print("Sum ",duplicate_counts.sum())
+        #dataset.drop_duplicates().to_csv('dataset_after_cleaned.csv', index=False)
         #dataset['Age'] = dataset['Age'].round().astype(int)
 
-        #ReaderData.vislizeBokPlot(self , dataset)
-        #ReaderData.cleanData(self ,dataset)
+        ReaderData.vislizeBokPlot(self , dataset)
+       #ReaderData.cleanData(self ,dataset)
         self.dataset = dataset
 
-    def vislizeBokPlot(self , data):
+    def vislizeBokPlot(self , dataset):
         columns = ['Age', 'BMI', 'No. Childred', 'Insurance Charges', 'Gender', 'Region']
-        for col in columns:
-            sns.boxplot(y=data[col])
-            plt.title(f'Box Plot of {col}')
-            plt.show()
+        plt.figure(figsize=(10, 6))
+        for i, column in enumerate(dataset.columns[:-1], 1):  # Exclude 'Diabetic' column for box plots
+            plt.subplot(3, 3, i)
+            sns.boxplot(y=dataset[column])
+            plt.title(f'Box Plot of {column}')
+
+        plt.tight_layout()
+        plt.show()
 
     def cleanData(self, dataset):
         cols =['Insurance Charges' , 'BMI']

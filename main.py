@@ -33,7 +33,7 @@ class Main:
 
 
             plt.figure(figsize=(10,6))
-            data['BMI'].plot(kind='density')
+            data['BMI'].plot(kind='density' , color ='red')
             plt.title('Density of BMI')
             plt.xlabel('BMI')
             plt.ylabel('Density')
@@ -42,16 +42,17 @@ class Main:
 
             #x = data.drop('Smoker', axis=1)
             #print (x.head())
-            x= data[['Age' , 'Insurance Charges' ]]
+            x= data[['Age' , 'Insurance Charges','No. Childred']]
             y = data['Smoker']
 
-
-            plt.figure(figsize=(12, 8))
-            sns.scatterplot(data=data, x='Age', y='Insurance Charges', hue='Smoker')
-            plt.title('Scatter Plot of Age vs. BMI, Colored by Region')
-            plt.xlabel('Age')
-            plt.ylabel('Insurance Charges')
+            plt.figure(figsize=(10, 6))
+            sns.scatterplot(data=data, x='Age', y='Insurance Charges', hue='Region')
+            plt.title('Scatterplot of Insurance Charges vs. Age by Region')
             plt.show()
+
+
+
+
 
 
             print(data.head())

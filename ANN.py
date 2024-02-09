@@ -34,7 +34,6 @@ recall = recall_score(y_test, y_pred_binary)
 f1 = f1_score(y_test, y_pred_binary)
 roc_auc = roc_auc_score(y_test, y_pred_binary)
 
-# Print the model's results
 print(f"Accuracy: {accuracy}")
 print(f"precision: {precision}")
 
@@ -46,7 +45,6 @@ print(f"roc_auc: {roc_auc}")
 
 conf_matrix = confusion_matrix(y_test, y_pred_binary)
 
-# Plot the confusion matrix
 plt.figure(figsize=(8, 6))
 sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', cbar=False)
 plt.title('Confusion Matrix')

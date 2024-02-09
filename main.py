@@ -22,7 +22,7 @@ class Main:
             plt.ylabel('Frequency')
             plt.show()
 
-            # desnity of ages
+
 
             plt.figure(figsize=(10 ,6))
             data['Age'].plot(kind='density')
@@ -40,9 +40,9 @@ class Main:
             plt.show()
 
 
-            #x = data.drop('Smoker', axis=1)
+            x = data.drop('Smoker', axis=1)
             #print (x.head())
-            x= data[['Age' , 'Insurance Charges','No. Childred']]
+           # x= data[['Age' , 'Insurance Charges','No. Childred']]
             y = data['Smoker']
 
             plt.figure(figsize=(10, 6))

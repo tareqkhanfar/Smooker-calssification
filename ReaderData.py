@@ -3,7 +3,6 @@ from matplotlib import pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 import seaborn as sns
 
-# List of columns to plot
 
 
 class ReaderData:
@@ -17,6 +16,8 @@ class ReaderData:
     def __init__(self):
 
         dataset = pd.read_csv("G:\\D\\MachineLearning\\smook\\dataset_after_cleaned.csv")
+
+
         for col in dataset.columns:
             print (dataset[col].describe())
 
@@ -30,7 +31,7 @@ class ReaderData:
     def vislizeBokPlot(self , dataset):
         columns = ['Age', 'BMI', 'No. Childred', 'Insurance Charges', 'Gender', 'Region']
         plt.figure(figsize=(10, 6))
-        for i, column in enumerate(dataset.columns[:-1], 1):  # Exclude 'Diabetic' column for box plots
+        for i, column in enumerate(dataset.columns[:-1], 1):
             plt.subplot(3, 3, i)
             sns.boxplot(y=dataset[column])
             plt.title(f'Box Plot of {column}')
@@ -39,9 +40,9 @@ class ReaderData:
         plt.show()
 
     def cleanData(self, dataset):
-        #dataset['Smoker'] = dataset['Smoker'].map({'yes': 1, 'no': 0})
-        #dataset['Gender'] = dataset['Gender'].map({'male': 1, 'female': 0})
-        #dataset['Region'] = dataset['Region'].map({'north': 1, 'south': 0})
+        dataset['Smoker'] = dataset['Smoker'].map({'yes': 1, 'no': 0})
+        dataset['Gender'] = dataset['Gender'].map({'male': 1, 'female': 0})
+        dataset['Region'] = dataset['Region'].map({'north': 1, 'south': 0})
         dataset['Age'] = dataset['Age'].round().astype(int)
         duplicate_counts = dataset.duplicated(
             subset=['Age', 'Gender', 'BMI', 'Region', 'No. Childred', 'Insurance Charges', 'Smoker'])

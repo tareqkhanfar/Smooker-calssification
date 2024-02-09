@@ -23,7 +23,6 @@ recall = recall_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
 roc_auc = roc_auc_score(y_test, knn.predict_proba(x_test)[:, 1])
 
-# Print the model's results
 print(f"Accuracy: {accuracy}")
 print(f"precision: {precision}")
 

@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# Data
 data = {
     "Model": ["KNN (k=3)", "KNN (k=5)", "KNN (k=7)", "Naive Bayes", "Decision Tree", "ANN"],
     "TN": [389, 381, 381, 367, 378, 359],
